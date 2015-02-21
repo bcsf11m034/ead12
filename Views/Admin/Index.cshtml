@@ -1,0 +1,136 @@
+﻿@model MvcApplication1.Models.User
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+ @Scripts.Render("~/bundles/jquery")
+
+<!-- jQuery -->
+<script>
+    function validateUsername() {
+        $('#result').hide();
+        var userName = $('#username').val();
+        var isOk = false;
+        //alert('User Name =' + userName);
+
+        //$.getJSON("/Admin/checkUserName?username=" + userName, function (data) {
+        $.ajax({
+            url: "/Admin/checkUserName?username=" + userName,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                console.log("123" + data);
+                if (data == true)
+                {
+                    $('#result').text("User already exists in database");
+                    $('#result').show();
+                    isOk = false;
+                }
+                if (data == false)
+                {
+                    $('#result').text("User not exists in database");
+                    $('#result').show();
+                    isOk = true;
+                }
+            },
+        });
+        console.log(isOk);
+        return isOk;
+    }
+        $(document).ready(function () {
+
+           
+            $('#b1').click(function () {
+                $('#result').hide();
+                var userName = $('#username').val();
+                //alert('User Name ='+ userName);
+                
+                $.getJSON("/Admin/checkUserName?username=" + userName,function (data)
+                {
+                    
+                    
+                       
+                    console.log(data);
+                    if(data == true)
+                    {
+                        $('#result').text("User already exists in database");
+                    }
+                    if (data == false)
+                    {
+                        $('#result').text("User not exists in database");
+                    }
+                    $('#result').show();
+                });
+
+            });
+
+        });
+    </script>
+
+
+<!-- multistep form -->
+
+
+
+<img src="~/Images/course.jpg" style="margin-left:37%;">
+
+<br/><br/>
+<a href="/Admin/adminhomepage" class="button" style="margin-left:40%">HOME</a>
+<!-- <form id="msform" action="/Admin/confirmcreate" method="post" onsubmit="return validateUsername();">  -->
+
+    @using (Html.BeginForm("confirmcreate","Admin",FormMethod.Post , new {id= "msform" , onsubmit="return validateUsername()"})) {
+        
+    @Html.ValidationSummary(true)
+	<!-- fieldsets -->
+	
+		<h1>Create Account</h1>
+		<div style="white-space:nowrap">
+		 @Html.TextBoxFor(Model => Model.username, new {placeholder= "Username"});
+           
+        <input type="button" id="b1" value="Check" class="submit action-button" style="width:30%"/>
+           
+            <div id="result" style="font-size:150%; color:white; font-family:Arial;"> </div>
+		</div>
+    
+     @Html.ValidationMessageFor(Model=>Model.username);
+    <br/><br/>
+
+       
+        
+            @Html.PasswordFor(Model => Model.password, new {placeholder= "Password"});
+            @Html.ValidationMessageFor(Model=>Model.password);
+            <h1 >Personal Details</h1>
+
+            @Html.TextBoxFor(Model => Model.fname, new { placeholder = "FirstName" });
+            @Html.ValidationMessageFor(Model => Model.fname);
+
+            @Html.TextBoxFor(  Model => Model.lname, new { placeholder = "LastName" });
+            @Html.ValidationMessageFor(Model => Model.lname);
+		
+           <!-- <input type="text" name="role" placeholder="Role">-->
+            @Html.TextBoxFor(Model => Model.RID, new { placeholder = "RoleId [2 for Teacher : 3 for Student]"}); 
+		     @Html.ValidationMessageFor(Model => Model.RID);
+            
+            @Html.TextBoxFor(Model => Model.email, new { placeholder = "Email" , type = "email",required="required" });
+            @Html.ValidationMessageFor(Model => Model.email);
+        
+		<input type="submit" name="submit" class="submit action-button" value="Submit" />
+	
+    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<br/>
+<br/>
+<br/>
+
+
+
+

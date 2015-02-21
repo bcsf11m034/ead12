@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "searchaccount";
+}
+
+@{
+    ViewBag.Title = "deleteaccount";
+}
+
+
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<!-- jQuery -->
+
+<script>
+            function validateUser() {
+                var un = $('#username').val();
+                $.ajax({
+                    url: "/Admin/searchconfirm",
+                    type: "post",
+                    data: { username: un },
+                    success: function (result) {
+                       
+                        
+
+                            $("#p1").html(result);
+                        
+                        
+                        
+                    }
+                    
+                });
+                return false;
+            }
+        </script>
+
+
+<!-- multistep form -->
+
+<img src="~/Images/course.jpg" / style="margin-left:37%;">
+<br/><br/>
+<a href="/Admin/adminhomepage" class="button" style="margin-left:40%">HOME</a>
+<form id="msform" autocomplete="on" method="post" onsubmit="return validateUser();">
+	<!-- fieldsets -->
+	
+		<h1>Search Account</h1>
+		
+
+		<input type="text" id="username" name="username" placeholder="username" required />
+        
+		<input type="submit" name="submit" class="submit action-button" value="Search" />
+	
+</form>
+<h2 style="color:whitesmoke; font-size:30px; text-decoration:underline;">Account details :</h2><br/>
+<p id="p1" style="color:white; font-size:30px;">
+    
+</p>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

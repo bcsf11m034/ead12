@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "myLayoutPage";
+}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <body id="page5">
+<div class="body1">
+  <div class="main">
+    <!-- header -->
+    <header>
+      <div class="wrapper">
+        <nav>
+          <ul id="menu">
+              <li>@Html.ActionLink("Home","index")</li>
+              <li>@Html.ActionLink("Courses","courses")</li>
+              <li>@Html.ActionLink("Online Quiz","quiz")</li>
+              <li>@Html.ActionLink("Teachers","teachers")</li>
+              <li>@Html.ActionLink("Learn Course","learncourse")</li>
+              <li>@Html.ActionLink("Contacts","contacts")</li>
+
+          </ul>
+        </nav>
+        <ul id="icons">
+         
+              <li><a href="#"><label > <a style="font-size:17px;color:#FFF;", href="/Guest/guest_Index"> Logout </a></label></a></li>
+          
+        </ul>
+      </div>
+      <div class="wrapper">
+        <h1><a href="/Home/index" id="logo">Learn Center</a></h1>
+      </div>
+      <div id="slogan"> We Will Open The World<span>of knowledge for you!</span> </div>
+    </header>
+    <!-- / header -->
+  </div>
+</div>
+
+    <div>
+        @RenderBody();
+    </div>
+
+
+        <div class="body2">
+            <div class="main">
+                
+                    <div class="box1">
+                        <footer>
+                            <div class="wrapper">
+                                <div class="pad1">
+                                    <div class="pad_left1">
+                                        <div class="wrapper">
+                                            <article class="col_1">
+                                                <h3>Address:</h3>
+                                                <p class="col_address">
+                                                    <strong>
+                                                        Country:<br>
+                                                        City:<br>
+                                                        Address:<br>
+                                                        Email:
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    Pakistan<br>
+                                                    Lahore<br>
+                                                    PUCIT Lahore<br>
+                                                    <a href="#">bcsf11m040@gmail.com</a>
+                                                </p>
+                                            </article>
+                                            <article class="col_2 pad_left2">
+                                                <h3>Join Us:</h3>
+                                                <ul class="list2">
+                                                    <li><a href="#">Facebook</a></li>
+                                                    <li><a href="#">Twitter</a></li>
+                                                    <li><a href="#">Viber</a></li>
+                                                    <li><a href="#">LinkedIn</a></li>
+                                                </ul>
+                                            </article>
+                                            <article class="col_3 pad_left2">
+                                                <h3>Special Thanks:</h3>
+                                                <ul class="list2">
+                                                    <li><a href="#">M. Farooq </a></li>
+                                                    <li><a href="#">Mrs. Sadia Shahzad</a></li>
+                                                    <li><a href="#">Parents </a></li>
+                                                    <li><a href="#">Friends </a></li>
+                                                </ul>
+                                            </article>
+
+                                        </div>
+                                        <div class="wrapper">
+                                            <article class="call"> <span class="call1">Call Me Now: </span><span class="call2">0322-4025877</span> </article>
+                                            <ul class="list2">
+                                                Copyright &copy; <a href="#">Domain Name</a> All Rights Reserved<br>
+                                                Design by <a target="_blank" href="http://www.templatemonster.com/">bcsf11m040@gmail.com</a>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </div>
+        </div>
+</body>
+</html>

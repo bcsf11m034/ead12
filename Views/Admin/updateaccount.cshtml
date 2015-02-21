@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "updateaccount";
+}
+
+
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<script>
+    function loadUpdateContent(url){
+        $.ajax({
+            url: url,
+            dataType: "html",
+            success: function(response){
+                $('#updateContent').html('');
+                $('#updateContent').html(response);
+                //console.log(response);
+            }
+        });
+    }
+</script>
+<!-- jQuery -->
+
+
+
+
+<!-- multistep form -->
+
+<img src="~/Images/course.jpg" style="margin-left:37%;"/>
+	<!-- fieldsets -->
+	
+<br/><br/>
+<a href="/Admin/adminhomepage" class="button" style="margin-left:40%">HOME</a>
+<h2 style="color:whitesmoke; font-size:30px; text-decoration:underline;">List of All Accounts :</h2><br />
+
+<table id="msforms" style="color: white;  border: 1px solid white;  width: 100%;  font-size: 20px;" cellspacing="0">
+    <thead>
+        <tr style="height: 40px;">
+            <th>Id</th>
+        
+            <th>Username</th>
+        
+            <th>First Name</th>
+        
+             <th>  Last Name  </th>
+        
+             <th> Email  </th>
+       
+             <th> Role </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var c in Model)
+    {
+      <tr>
+        <td>@c.Id</td>
+          
+        <td>@c.username</td>
+          
+        <td>@c.fname</td>
+          
+          <td>@c.lname</td>
+        
+          <td>@c.email</td>
+          
+          <td>@c.Role.name</td>
+         <!--<td><a href="/Admin/updateconfirm/@c.Id"> <input type="button" class="submit action-button" value="Search & Update" /></td>-->
+          <td><input type="button" class="submit action-button" value="Search & Update" onclick="loadUpdateContent('/Admin/updateconfirm/@c.Id');"/></td>
+    </tr>
+    }
+        </tbody>
+</table>
+        
+		
+<div id="updateContent"></div>	
+
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+

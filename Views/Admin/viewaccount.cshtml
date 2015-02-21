@@ -1,0 +1,109 @@
+﻿@Model MvcApplication1.Models.User;
+
+@{
+    Layout = "~/Views/Shared/tableParent.cshtml";
+}
+@{
+    ViewBag.Title = "viewaccount";
+}
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<link href="~/Content/datatable.css" rel="stylesheet" type="text/css" />
+<!--<script src="~/Scripts/jquery-1.7.1.min.js"></script>-->
+<script src="~/Scripts/jquery-1.11.2.min.js"></script>
+<script src="~/Scripts/data_table.js"></script>
+<!-- multistep form -->
+
+<img src="~/Images/course.jpg" / style="margin-left:37%;">
+<br/><br/>
+<a href="/Admin/adminhomepage" class="button" style="margin-left:40%">HOME</a>
+
+<h2 style="color:whitesmoke; font-size:30px; text-decoration:underline;">List of All Accounts :</h2><br />
+
+<table id="users" style="color: white;  border: 1px solid white;  width: 100%;  font-size: 20px;" cellspacing="0">
+    <thead>
+        <tr style="height: 40px;">
+            <th>Id</th>
+        
+        <th>Username</th>
+        
+        <th>First Name</th>
+        
+         <th>  Last Name  </th>
+        
+         <th> Email  </th>
+       
+         <th> Role </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var c in Model)
+    {
+      <tr>
+        <td>@c.Id</td>
+          
+        <td>@c.username</td>
+          
+        <td>@c.fname</td>
+          
+          <td>@c.lname</td>
+        
+          <td>@c.email</td>
+          
+          <td>@c.Role.name</td>
+    </tr>
+    }
+    </tbody>
+    <tfoot>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Firstname(s)</th>
+			<th>Lastname</th>
+			<th>Email</th>
+            <th>Role</th>
+		</tr>
+	</tfoot>
+</table>
+
+    <script>
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#users tfoot th').each(function () {
+                var title = $('#users thead th').eq($(this).index()).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+
+            // DataTable
+            var table = $('#users').DataTable({
+                "info":false
+            });
+
+            // Apply the search
+            table.columns().eq(0).each(function (colIdx) {
+                $('input', table.column(colIdx).footer()).on('keyup change', function () {
+                    table
+                        .column(colIdx)
+                        .search(this.value)
+                        .draw();
+                });
+            });
+            $('input[type=search]').parent().hide();
+            $('select[name=users_length]').parent().hide();
+            $('#users_info, #users_previous, #users_next').css({
+                'color': 'white !important',
+                'font-size': '20px'
+            });
+            
+        });
+    </script>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+

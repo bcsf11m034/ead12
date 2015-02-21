@@ -1,0 +1,418 @@
+﻿@{
+    Layout = "~/Views/Shared/tableParent.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        
+            .button {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 18px;
+    border: 0px solid #905987;
+    border-radius: 18px;
+    background: #ea90dc;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ea90dc), to(#905987));
+    background: -moz-linear-gradient(top, #ea90dc, #905987);
+    background: linear-gradient(to bottom, #ea90dc, #905987);
+    text-shadow: #5a3855 -2px 1px 1px;
+    font: normal normal bold 19px arial;
+    color: #ffffff;
+    text-decoration: none;
+}
+.button:hover,
+.button:focus {
+    border: 0px solid ##b46fa9;
+    background: #ffadff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffadff), to(#ad6ba2));
+    background: -moz-linear-gradient(top, #ffadff, #ad6ba2);
+    background: linear-gradient(to bottom, #ffadff, #ad6ba2);
+    color: #ffffff;
+    text-decoration: none;
+}
+.button:active {
+    background: #905987;
+    background: -webkit-gradient(linear, left top, left bottom, from(#905987), to(#905987));
+    background: -moz-linear-gradient(top, #905987, #905987);
+    background: linear-gradient(to bottom, #905987, #905987);
+}
+.button:before{
+    content:  "\0000a0";
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    margin: 0 4px -6px -4px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEx0lEQVRIia2VfWhVdRjHP/ecc7frvXvVtbeYzusLy5fJjHxBSVkGUkynJf4ziJQCq1mJEYJJEtEfEQUGEUqiQVR/aC++FtV0c7pw0ticOt3ddvd2d7fde3ffz73nnF9/nDO9hEmDHng48OP5fV+e5+H8ZGYY9QspXlfG6ifymSNpxMdUkjPFeGQ0vVVyXIw2C6P3rAg2faR2fr61+fud2bvKHDj+F4JfGsu+E7EhISKDQkSGhIj7hBi5JHqPbbv1aS3r/1kvzZhBCFBDVgYh5gd7Ie5tH1a9cuj9306+6NyVWa7M3IMBqTDoBiBMQpMZ16JNWS806l+GIh/49l7kHIA8U/iGFWKHOz+y1KZOQnYe6BroCdCToMWxF8yVKnKiz7Zdu/PVYIyEXF1EztPlLOwOMGlKenRsmZ/e4fJ3Lo12XcbmuUD27DngKAQtDloS0jFyy+a5SoJX9G9uqL/LR7ay9+CBhh92b3hs90s1tlWbK6by1ZiI3Q4SfBjhunlsyHOwTFGwJ5MqmudPXGXlYHeCljDdCLCl/BXHzg9+Yft6O4cb3nz9EK55Jl4qSHrCYwx6vf1To4Otnr6Ri8fbROvZXjwWx2ygsqqIqlef5OXnFlFb4S6VnOv3gK5bkgTqWBeb955ersRT6AQ8ILnuC7YXzpPcs+e7qTHcNVqooW7HoDE0MnwvMuFrudkz/uvRZlqavNzYd5Fz3jDvvZvn2+dUvWBzmkPXIdthZ0ERc5WbfnpEaABbbgUI40FXJGEusSTIKiqT3MWPL0YyFq+ondq1fafPaG/vurD+cPj5z65yePNyNpYagZWgmgSGDSbbkGQU5coQt6OBcXKLgyaBTZi7lbF+5keAAUjgsAWkrMlwFeaah6W8WbeR1JXoqgke6AZ1AGRQun0M+QPhUK4aKADjAbicAc60GwMxchf/tTEiMTTAOPgMS1atLdmCMQV6GsL3QA2ABFoaQ0kYhCZDqndBsLuAnCJANl1IwsS/70RH7+3H1x5nRCV8ooOPjzZQW19XeDy/ODsHtRcS45gDgLgfhsNMKIAWiOMhOVqN4QOnCxxOsNlBsmUsqI4oBmeNgjEmAgfXyO+459sXy0oaUnfN9trNFpKCgT5CV4fwKABjUbpRqEcRQBT0KGiAJJkp28AGSh4UFsLqpVQi0iBSpstsU/h0Jm5Ch5/LkaTpgA4fHQKwKdbYFEw1imGldSZbabMSzMEbFrgBWieMDKOd7OAIYCgAl/roSajgzLMA7KZNBJCTcSZbRJn/YGERqJBuBb8HzvRz8vwtLmOV0zXKkD9CqLKUAuwgpiDQbra1sBLk5UBJBomU4UAF0QfRFggmodlP076fOWBJNAlSOqHxMN5KOwViFMa7YVgQlUGJ9uNweSCnHLKrQCoFHCA00Ccg3gNTXkgJjDP9nNr/E28bBv5pg9PvgTY1yT29i2r/OPRp+PZfYE8gRvyNdTSuLWdjSYAcpQ2UWSBbm4wG0TTGjQDdx65z5Ewn3wLhjAY+eHCGE3SNhdj+V5yu106ze2CS64DReIqWHAdL6paxafVcnipyUZyloERUQnfG6fmxkz/u+GgFJqxpPDzqqlnzST0nnFm4/7UIHNbY8wAnM3wRJSBrJhf+S/wNbS430494JFMAAAAASUVORK5CYII=") no-repeat left center transparent;
+    background-size: 100% 100%;
+}
+
+        
+    </style>
+	<meta charset="utf-8" />
+	<title>Nutheme - Free CSS template by ChocoTemplates.com</title>
+	<link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.ico" />
+	<link rel="stylesheet" href="~/Content/style1.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="~/Content/flexslider1.css" type="text/css" media="all" />
+	<link href="~/Content/fancybox1.css" rel="stylesheet" />
+    <link href="~/Content/fancybox2.css" rel="stylesheet" />
+    <link href="~/Content/fancybox3.css" rel="stylesheet" />
+	<script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <!-- Fancy boc resources -->
+    <script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script src="~/Scripts/jquery.fancybox-buttons.js"></script>
+    <script src="~/Scripts/jquery.fancybox-thumbs.js"></script>
+    <script src="~/Scripts/jquery.fancybox-media.js"></script>
+	<!--[if lt IE 9]>
+		<script src="js/modernizr.custom.js"></script>
+	<![endif]-->
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+	
+	<script src="~/Scripts/functions.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- top-section -->
+		<section class="top-section">
+			<!-- header -->
+			<header>
+				<div class="shell">
+					<h1 id="logo"><a href="#">Course Resource Center</a></h1>
+					<!-- navigation -->
+					<nav id="navigation">
+						<a href="#" class="active">HOME</a>
+						<a href="#">Notifications</a>
+						<a href="#">View Courses</a>
+						<a href="#">New Updates</a>
+						<a href="#">Add Contents</a>
+                        <a href="/Guest/guest_index">Logout</a>
+					</nav>
+					<!-- end of navigation -->
+				</div>
+			</header>
+            
+             
+			<!-- end of header -->
+			<!-- shell -->
+			<div class="shell">
+				<!-- slider -->
+				<div class="slider-holder">
+					<span class="slider-t"></span>
+					<span class="slider-b-left"></span>
+					<span class="slider-b-center"></span>
+					<span class="slider-b-right"></span>
+					<span class="slider-l"></span>
+					<span class="slider-r"></span>
+					<div class="flexslider">
+						<ul class="slides">
+							<li>
+								
+								<div class="slide-cnt">
+									<h2>Course Resource Center</h2>
+									<p>The best and Effective Website to Learn a course.</p>
+									<div class="thumbnails">
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/1_b.jpg" data-fancybox-group="gallery"><img src="~/images/1_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/2_b.jpg" data-fancybox-group="gallery"><img src="~/images/2_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/3_b.jpg" data-fancybox-group="gallery"><img src="~/images/3_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/4_b.jpg" data-fancybox-group="gallery"><img src="~/images/4_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/5_b.jpg" data-fancybox-group="gallery"><img src="~/images/5_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<img src="~/images/slide-img.png" alt="" />
+								<div class="slide-cnt">
+									<h2>Course Resource Center</h2>
+									<p>The best and Effective Website to Learn a course.</p>
+									<div class="thumbnails">
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/1_b.jpg" data-fancybox-group="gallery"><img src="~/images/1_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/2_b.jpg" data-fancybox-group="gallery"><img src="~/images/2_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/3_b.jpg" data-fancybox-group="gallery"><img src="~/images/3_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/4_b.jpg" data-fancybox-group="gallery"><img src="~/images/4_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/5_b.jpg" data-fancybox-group="gallery"><img src="~/images/5_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								
+								<div class="slide-cnt">
+									<h2>Course Resource Center</h2>
+									<p>The best and Effective Website to Learn a course.</p>
+									<div class="thumbnails">
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/1_b.jpg" data-fancybox-group="gallery"><img src="~/images/1_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/2_b.jpg" data-fancybox-group="gallery"><img src="~/images/2_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/3_b.jpg" data-fancybox-group="gallery"><img src="~/images/3_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/4_b.jpg" data-fancybox-group="gallery"><img src="~/images/4_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/5_b.jpg" data-fancybox-group="gallery"><img src="~/images/5_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<img src="~/images/slide-img.png" alt="" />
+								<div class="slide-cnt">
+									<h2>Course Resource Center</h2>
+									<p>The best and Effective Website to Learn a course.</p>
+									<div class="thumbnails">
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/1_b.jpg" data-fancybox-group="gallery"><img src="~/images/1_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/2_b.jpg" data-fancybox-group="gallery"><img src="~/images/2_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/3_b.jpg" data-fancybox-group="gallery"><img src="~/images/3_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/4_b.jpg" data-fancybox-group="gallery"><img src="~/images/4_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/5_b.jpg" data-fancybox-group="gallery"><img src="~/images/5_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								
+								<div class="slide-cnt">
+									<h2>Course Resource Center</h2>
+									<p>The best and Effective Website to Learn a course.</p>
+									<div class="thumbnails">
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/1_b.jpg" data-fancybox-group="gallery"><img src="~/images/1_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/2_b.jpg" data-fancybox-group="gallery"><img src="~/images/2_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/3_b.jpg" data-fancybox-group="gallery"><img src="~/images/3_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/4_b.jpg" data-fancybox-group="gallery"><img src="~/images/4_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+										<div class="thumbnail">
+											<strong></strong>
+											<a class="fancybox" href="~/images/5_b.jpg" data-fancybox-group="gallery"><img src="~/images/5_s.jpg" alt="" /></a>
+											<span class="tip"><em></em>Explore Project</span>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- end of slider-holder -->
+				<h2>Never Stop Learning because Life never stops Teaching</h2>
+				<h3><a href="#">“Welcome to the Learning Center”</a></h3>
+			</div>
+			<!-- end of shell -->
+		</section>	
+
+        <form action="/Teacher/upload" method="post" enctype="multipart/form-data">
+    <input  type="file" id="filetoUpload" name="file">
+    <span class="fiel-validation-error" id="spanfile"></span>
+
+    <input class="button" type="submit" id="btnSubmit" value="UPLOAD">
+    </form>
+		<!-- end of top-section -->
+		<!-- main -->
+		<div class="main">
+			<div class="shell">
+				<span class="main-arr"></span>
+				<!-- content -->
+				<div class="content">
+					<h3>MORE ABOUT US</h3>
+
+					<img src="~/images/img.png" alt="" class="alignright" />
+					<p>We are the PUCITIANS. <br/>BCSF11M034</p>
+
+					<a href="#" class="more-btn">Read More</a>
+				</div>
+				<!-- end of content -->
+				<aside>
+					<div class="widget">
+						<h3>WHO WE ARE</h3>
+						<ul>
+							<li><a href="#">M. Aqib Saeed</a></li>
+							<li><a href="#">A Rauf Saeed</a></li>
+							<li><a href="#">Hello</a></li>
+							<li><a href="#">PUCIT</a></li>
+	
+						</ul>
+						<a href="#" class="more-btn">Read More</a>
+					</div>
+				</aside>
+				<div class="cl">&nbsp;</div>
+			</div>
+		</div>
+		<!-- end of main -->
+		<section class="bottom-section">
+			<div class="shell">
+				<div class="cols">
+					<div class="col">
+						<div class="newsletter">
+							<h4>Courses</h4>
+							<p>Feel free to contact us.</p>
+							<form method="post">
+								<input type="text" class="field" value="Your Email Address" title="Your Email Address"/>
+								<input type="submit" class="send-btn" value="Send" />
+							</form>
+						</div>
+							
+						<div class="support">
+							<h4>Quizzes</h4>
+							<p><a href="#">Downloads</a> <a href="#"></a></p>
+						</div>
+
+						<div class="socials">
+							<h4>Recently added</h4>
+							<a href="#" class="ico facebook-ico">facebook</a>
+							<a href="#" class="ico rss-ico">rss</a>
+						</div>
+					</div>
+
+					<div class="col">
+						<h4>Old Entries</h4>
+						<ul>
+							<li>
+								<small>2015</small>
+								<p>PUCIT Resource Center<a href="#" class="more">Read More</a></p>
+							</li>
+							<li>
+								<small>2015</small>
+								<p>PUCIT Resource Center <a href="#" class="more">Read More</a></p>
+							</li>
+							<li>
+								<small>2015</small>
+								<p>PUCIT Resource Center<a href="#" class="more">Read More</a></p>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col">
+						<h4>Feedback</h4>
+						<div class="user">
+							<span class="quote quote-top"></span>
+							<span class="quote quote-bottom"></span>
+							<img src="~/images/user-ico.png" alt="" class="alignleft" />
+							
+						</div>
+						<p class="username"><a href="#"><strong>Mam Sadia</strong> PUCIT</a></p>
+					</div>
+					<div class="cl">&nbsp;</div>
+				</div>
+			</div>
+		</section>
+		<div id="footer-push"></div>
+	</div>
+	<!-- end of wrapper -->
+	<div id="footer">
+		<div class="shell">
+			<div class="footer-nav">
+				<ul>
+					<li><a href="#">Yahoo</a></li>
+					<li><a href="#">Gmail</a></li>
+					<li><a href="#">Twitter</a></li>
+					<li><a href="#">Facebook</a></li>
+					<li><a href="#">Social</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</div>
+			<p class="copy">Copyright &copy;2015 design by: <a href="http://chocotemplates.com" target="_blank">PUCIT Programmers</a></p>
+			<div class="cl">&nbsp;</div>
+		</div>
+	</div>
+   
+</body>
+</html>

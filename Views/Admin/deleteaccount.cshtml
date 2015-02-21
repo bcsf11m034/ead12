@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "deleteaccount";
+}
+
+
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+<!-- jQuery -->
+
+<script>
+    
+    function f1() {
+        confirm("Confirm Delete Account");
+
+    }
+    </script>
+
+
+<!-- multistep form -->
+
+<img src="~/Images/course.jpg" / style="margin-left:37%;">
+<br/><br/>
+<a href="/Admin/adminhomepage" class="button" style="margin-left:40%">HOME</a>
+
+<form id="msform" action="/Admin/confirmdelete" method="post" onsubmit="f1()">
+	<!-- fieldsets -->
+	
+		<h1>Delete Account</h1>
+		
+
+		<br/><br/>
+		<input type="text" name="username" placeholder="username" required />
+        
+		<input type="submit" name="submit" class="submit action-button" value="Delete" />
+	
+</form>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+

@@ -1,0 +1,62 @@
+﻿@model MvcApplication1.Models.User
+
+@{
+    ViewBag.Title = "updateconfirm";
+}
+<link href='~/Content/mystyle.css' rel='stylesheet' type='text/css'>
+
+<script>
+    function f1() {
+        var a = document.getElementById("role").value;
+        if (a.toLowerCase() == "teacher") {
+           
+            return true;
+        }
+        else if (a.toLowerCase() == "student") {
+            
+            return true;
+        }
+        else {
+            
+            alert("You Entered invalid Role. \n [ Type Teacher or Student]");
+            return false;
+        }
+    }
+</script>
+    
+<!-- jQuery --0>
+
+    
+
+
+<!-- multistep form -0->
+
+<img src="~/Images/course.jpg" / style="margin-left:37%;">-->
+<form id="msform" action="/Admin/updatefinal/@Model.Id" method="post" onsubmit="return f1()">
+	<!-- fieldsets -->
+	    <label style="font-size:30px; color:white; font-weight:bold; text-decoration:underline;font-family:Arial">Username : </label>
+		<input type="text" name="username" value="@Model.username" required />
+        
+        <label style="font-size:30px; color:white; font-weight:bold; text-decoration:underline;font-family:Arial">Password : </label>
+		<input type="text" name="password" value="@Model.password" required />
+
+        <label style="font-size:30px; color:white; font-weight:bold; text-decoration:underline;font-family:Arial">First Name : </label>
+		<input type="text" name="fname" value="@Model.fname" required />
+
+        <label style="font-size:30px; color:white; font-weight:bold; text-decoration:underline;font-family:Arial">Last Name : </label>
+		<input type="text" name="lname" value="@Model.lname" required />
+
+         <label style="font-size:30px; color:white; font-weight:bold; text-decoration:underline;font-family:Arial">Email : </label>
+		<input type="email" name="email" value="@Model.email" required />
+
+         <label style="font-size:30px; color:white; font-weight:bold; text-decoration:underline;font-family:Arial">Role : </label>
+		<input id="role" type="text" name="role" value="@Model.Role.name" required />
+        
+		<input type="submit" name="submit" class="submit action-button" value="Update" />
+	
+</form>
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
