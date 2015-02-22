@@ -299,12 +299,7 @@
 			<!-- end of shell -->
 		</section>	
 
-        <form action="/Teacher/upload" method="post" enctype="multipart/form-data">
-    <input  type="file" id="filetoUpload" name="file">
-    <span class="fiel-validation-error" id="spanfile"></span>
-
-    <input class="button" type="submit" id="btnSubmit" value="UPLOAD">
-    </form>
+        
 		<!-- end of top-section -->
 		<!-- main -->
 		<div class="main">
@@ -312,12 +307,22 @@
 				<span class="main-arr"></span>
 				<!-- content -->
 				<div class="content">
-					<h3>MORE ABOUT US</h3>
+					<h3>Upload any Material</h3>
+<!--    File uploading -->
 
-					<img src="~/images/img.png" alt="" class="alignright" />
+                    <form action="/Teacher/upload" method="post" enctype="multipart/form-data">
+    <input  type="file" id="filetoUpload" name="file">
+    <span class="fiel-validation-error" id="spanfile"></span>
+
+    <input class="button" type="submit" id="btnSubmit" value="UPLOAD">
+    </form>
+
+
+
+					<img src="~/images/img.png" alt="" class="alignright" /><br /><br />
 					<p>We are the PUCITIANS. <br/>BCSF11M034</p>
 
-					<a href="#" class="more-btn">Read More</a>
+					
 				</div>
 				<!-- end of content -->
 				<aside>

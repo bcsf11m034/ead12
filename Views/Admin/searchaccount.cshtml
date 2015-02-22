@@ -17,7 +17,9 @@
                 $.ajax({
                     url: "/Admin/searchconfirm",
                     type: "post",
+                    dataType:"html",
                     data: { username: un },
+                    
                     success: function (result) {
                        
                         
