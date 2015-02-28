@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
@@ -107,8 +108,44 @@
             @Html.ValidationMessageFor(Model=>Model.password);
             <h1 >Personal Details</h1>
 
-            @Html.TextBoxFor(Model => Model.fname, new { placeholder = "FirstName" });
-            @Html.ValidationMessageFor(Model => Model.fname);
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        @Html.TextBoxFor(x=>x.username);
+        @Html.ValidationMessageFor(x=>x.username);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
             @Html.TextBoxFor(  Model => Model.lname, new { placeholder = "LastName" });
             @Html.ValidationMessageFor(Model => Model.lname);
